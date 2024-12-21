@@ -1,0 +1,19 @@
+/** @format */
+
+.holiday-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+.holiday-card img.holiday-image {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+.holiday-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
