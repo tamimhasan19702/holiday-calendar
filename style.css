@@ -1,19 +1,62 @@
 /** @format */
 
-.holiday-card {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin: 20px 0;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  text-align: center;
+@media (max-width: 768px) {
+  .holiday-viewer {
+    flex-direction: column !important;
+  }
 }
-.holiday-card img.holiday-image {
-  max-width: 100%;
-  height: auto;
-  margin: 10px 0;
+
+.holiday-section {
+  padding: 10px;
 }
-.holiday-card h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+a .holiday-card {
+  background-color: #fff; /* White background for the card */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  overflow: hidden; /* Ensure the border-radius is applied to the image */
+  margin-bottom: 20px; /* Space between cards */
+}
+
+.past-holiday .holiday-card,
+.upcoming-holidays .holiday-card {
+  width: 100%; /* Full width of the section */
+  padding: 20px;
+}
+
+.today-holiday .holiday-card {
+  width: 100%; /* Full width of the section */
+  display: flex;
+  flex-direction: column; /* Stack title, date, and description vertically */
+}
+
+.today-holiday .holiday-card img {
+  width: 100%; /* Full width for the image */
+  height: 200px; /* Fixed height for the image */
+  object-fit: cover; /* Cover the area without distortion */
+}
+
+.holiday-title {
+  font-size: 1.5em; /* Title size */
+  margin: 10px 0; /* Margin for spacing */
+}
+
+.holiday-date {
+  font-size: 1em; /* Date size */
+  color: #666; /* Subtle color for the date */
+}
+
+.holiday-description {
+  font-size: 0.9em; /* Description size */
+  color: #333; /* Darker color for the description */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .holiday-viewer {
+    flex-direction: column; /* Stack sections on smaller screens */
+  }
+
+  .holiday-section {
+    width: 100%; /* Full width for each section */
+  }
 }
