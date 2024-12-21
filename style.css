@@ -1,13 +1,26 @@
 /** @format */
 
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=M+PLUS+Rounded+1c&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+DE+VA+Guides&display=swap");
+
 @media (max-width: 768px) {
   .holiday-viewer {
     flex-direction: column !important;
   }
 }
 
+.holiday-viewer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
 .holiday-section {
-  padding: 10px;
+  padding: 5px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-radius: 20px;
 }
 a .holiday-card {
   background-color: #fff; /* White background for the card */
@@ -23,9 +36,21 @@ a .holiday-card {
   padding: 20px;
 }
 
+.holiday-heading {
+  font-family: "Dancing Script", serif;
+}
+
+.holiday-date {
+  font-family: "M PLUS Rounded 1c", serif;
+  font-weight: 600;
+  font-style: normal;
+  color: black;
+}
+
 .today-holiday .holiday-card {
   width: 100%; /* Full width of the section */
   display: flex;
+  gap: 10px;
   flex-direction: column; /* Stack title, date, and description vertically */
 }
 
@@ -33,21 +58,43 @@ a .holiday-card {
   width: 100%; /* Full width for the image */
   height: 200px; /* Fixed height for the image */
   object-fit: cover; /* Cover the area without distortion */
+  border-radius: 10px;
 }
 
 .holiday-title {
-  font-size: 1.5em; /* Title size */
+  font-size: 2em; /* Title size */
   margin: 10px 0; /* Margin for spacing */
+  font-family: "Dancing Script", serif;
+}
+
+.current-date {
+  font-size: 2em;
+  font-family: "M PLUS Rounded 1c", serif;
+  color: black;
 }
 
 .holiday-date {
   font-size: 1em; /* Date size */
-  color: #666; /* Subtle color for the date */
+  color: #000000; /* Subtle color for the date */
+}
+
+.no-holidays {
+  font-size: 0.8em; /* No holidays message size */
+  color: #666; /* Subtle color for the message */
+  font-family: "M PLUS Rounded 1c", serif;
+}
+
+.current-no-holidays {
+  font-size: 1.2em; /* No holidays message size */
+  color: #000000; /* Subtle color for the message */
+  font-family: "M PLUS Rounded 1c", serif;
+  font-weight: 600;
 }
 
 .holiday-description {
-  font-size: 0.9em; /* Description size */
-  color: #333; /* Darker color for the description */
+  font-size: 1em; /* Description size */
+  color: #000000; /* Darker color for the description */
+  font-family: "M PLUS Rounded 1c", serif;
 }
 
 /* Responsive adjustments */

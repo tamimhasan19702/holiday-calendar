@@ -47,7 +47,7 @@ $upcoming_args = array(
     ),
     'orderby' => 'meta_value',
     'order' => 'ASC',
-    'posts_per_page' => 2 // Limit to 2 upcoming holidays
+    'posts_per_page' => 1 // Limit to 2 upcoming holidays
 );
 
 // Execute past and upcoming holiday queries
@@ -59,7 +59,7 @@ $upcoming_query = new WP_Query($upcoming_args);
 
     <!-- Past Holiday Section -->
     <div class="holiday-section past-holiday" style="flex: 0 0 25%; padding: 10px;">
-        <h3>Past Holiday</h3>
+        <h3 class="holiday-heading">Past Holiday</h3>
         <?php if ($past_query->have_posts()) : ?>
         <?php while ($past_query->have_posts()) : $past_query->the_post(); ?>
         <div class="holiday-card">
@@ -67,36 +67,40 @@ $upcoming_query = new WP_Query($upcoming_args);
             <p class="holiday-date">
                 <?php echo date('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true))); ?></p>
 
-            <p class="holiday-description"><?php the_content(); ?></p>
+
         </div>
         <?php endwhile; ?>
         <?php else : ?>
-        <p>No past holidays found.</p>
+        <p class="no-holidays">No past holidays found.</p>
         <?php endif; ?>
     </div>
 
     <!-- Today's Holiday Section -->
     <div class="holiday-section today-holiday" style="flex: 0 0 50%; padding: 10px;">
-        <h3>Today's Holiday</h3>
+        <h3 class="holiday-heading">Today's Holiday</h3>
         <?php if ($today_query->have_posts()) : ?>
         <?php while ($today_query->have_posts()) : $today_query->the_post(); ?>
         <div class="holiday-card">
             <h4 class="holiday-title"><?php the_title(); ?></h4>
             <p class="holiday-date">
-                <?php echo date('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true))); ?></p>
+                <?php echo date('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true))); ?>
+            </p>
             <?php echo get_the_post_thumbnail(get_the_ID(), 'medium', array('class' => 'holiday-image')); ?>
-            <p class="holiday-description"><?php the_content(); ?></p>
+            <div class="holiday-description">
+                <?php echo wpautop(get_the_content(), true); ?>
+            </div>
         </div>
         <?php endwhile; ?>
         <?php else : ?>
         <p class="current-date"> <?php echo date('j F Y'); ?></p>
-        <p>No holiday today.</p>
+
+        <p class=" current-no-holidays">No holiday today.</p>
         <?php endif; ?>
     </div>
 
     <!-- Upcoming Holidays Section -->
     <div class="holiday-section upcoming-holidays" style="flex: 0 0 25%; padding: 10px;">
-        <h3>Upcoming Holidays</h3>
+        <h3 class="holiday-heading">Upcoming Holidays</h3>
         <?php if ($upcoming_query->have_posts()) : ?>
         <?php while ($upcoming_query->have_posts()) : $upcoming_query->the_post(); ?>
         <div class="holiday-card">
@@ -104,11 +108,11 @@ $upcoming_query = new WP_Query($upcoming_args);
             <p class="holiday-date">
                 <?php echo date('j F Y ', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true))); ?></p>
 
-            <p class="holiday-description"><?php the_content(); ?></p>
+
         </div>
         <?php endwhile; ?>
         <?php else : ?>
-        <p>No upcoming holidays found.</p>
+        <p class="no-holidays">No upcoming holidays found.</p>
         <?php endif; ?>
     </div>
 </div>

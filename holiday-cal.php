@@ -74,7 +74,7 @@ add_shortcode('holiday_viewer', 'hv_display_holiday_shortcode');
 
 // Enqueue styles for the plugin.
 function hv_enqueue_styles() {
-    wp_enqueue_style('hv-styles', plugin_dir_url(__FILE__) . 'styles.css');
+    wp_enqueue_style('hv-styles', plugin_dir_url(__FILE__) . 'style.css');
 }
 add_action('wp_enqueue_scripts', 'hv_enqueue_styles');
 
