@@ -95,7 +95,7 @@ function hv_display_holiday_shortcode()
         ),
         'orderby' => 'meta_value',
         'order' => 'DESC',
-        'posts_per_page' => 3 // Limit to 3 previous holidays
+        'posts_per_page' => 1 // Limit to 3 previous holidays
     );
 
     // Query for upcoming holidays
