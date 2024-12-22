@@ -47,7 +47,7 @@ $upcoming_args = array(
     ),
     'orderby' => 'meta_value',
     'order' => 'ASC',
-    'posts_per_page' => 1 // Limit to 2 upcoming holidays
+    'posts_per_page' => 1 // Limit to 1 upcoming holiday
 );
 
 // Execute past and upcoming holiday queries
@@ -65,9 +65,16 @@ $upcoming_query = new WP_Query($upcoming_args);
         <div class="holiday-card">
             <h4 class="holiday-title"><?php the_title(); ?></h4>
             <p class="holiday-date">
-                <?php echo date('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true))); ?></p>
-
-
+                <?php echo date('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true))); ?>
+            </p>
+            <?php
+                    // Get button text and page link
+                    $button_text = get_post_meta(get_the_ID(), '_holiday_button_text', true);
+                    $page_link = get_post_meta(get_the_ID(), '_holiday_page_link', true);
+                    if ($button_text && $page_link) {
+                        echo '<a href="' . esc_url($page_link) . '" class="holiday-button" >' . esc_html($button_text) . '</a>';
+                    }
+                    ?>
         </div>
         <?php endwhile; ?>
         <?php else : ?>
@@ -89,12 +96,19 @@ $upcoming_query = new WP_Query($upcoming_args);
             <div class="holiday-description">
                 <?php echo wpautop(get_the_content(), true); ?>
             </div>
+            <?php
+                    // Get button text and page link
+                    $button_text = get_post_meta(get_the_ID(), '_holiday_button_text', true);
+                    $page_link = get_post_meta(get_the_ID(), '_holiday_page_link', true);
+                    if ($button_text && $page_link) {
+                        echo '<a href="' . esc_url($page_link) . '" class="holiday-button" >' . esc_html($button_text) . '</a>';
+                    }
+                    ?>
         </div>
         <?php endwhile; ?>
         <?php else : ?>
-        <p class="current-date"> <?php echo date('j F Y'); ?></p>
-
-        <p class=" current-no-holidays">No holiday today.</p>
+        <p class="current-date"><?php echo date('j F Y'); ?></p>
+        <p class="current-no-holidays">No holiday today.</p>
         <?php endif; ?>
     </div>
 
@@ -106,9 +120,16 @@ $upcoming_query = new WP_Query($upcoming_args);
         <div class="holiday-card">
             <h4 class="holiday-title"><?php the_title(); ?></h4>
             <p class="holiday-date">
-                <?php echo date('j F Y ', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true))); ?></p>
-
-
+                <?php echo date('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true))); ?>
+            </p>
+            <?php
+                    // Get button text and page link
+                    $button_text = get_post_meta(get_the_ID(), '_holiday_button_text', true);
+                    $page_link = get_post_meta(get_the_ID(), '_holiday_page_link', true);
+                    if ($button_text && $page_link) {
+                        echo '<a href="' . esc_url($page_link) . '" class="holiday-button" >' . esc_html($button_text) . '</a>';
+                    }
+                    ?>
         </div>
         <?php endwhile; ?>
         <?php else : ?>

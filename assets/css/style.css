@@ -97,6 +97,26 @@ a .holiday-card {
   font-family: "M PLUS Rounded 1c", serif;
 }
 
+.holiday-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-family: "M PLUS Rounded 1c", serif;
+  font-weight: 600;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+.holiday-button:hover {
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .holiday-viewer {
