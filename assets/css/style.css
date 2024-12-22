@@ -18,16 +18,17 @@
 
 .holiday-section {
   padding: 5px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+
   text-align: center;
   border-radius: 20px;
 }
-a .holiday-card {
+.holiday-card {
   background-color: #fff; /* White background for the card */
   border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   overflow: hidden; /* Ensure the border-radius is applied to the image */
   margin-bottom: 20px; /* Space between cards */
+  padding: 20px;
 }
 
 .past-holiday .holiday-card,
@@ -38,6 +39,9 @@ a .holiday-card {
 
 .holiday-heading {
   font-family: "Dancing Script", serif;
+  font-size: 2.5em;
+  position: relative;
+  display: inline-block;
 }
 
 .holiday-date {
@@ -95,9 +99,11 @@ a .holiday-card {
   font-size: 1em; /* Description size */
   color: #000000; /* Darker color for the description */
   font-family: "M PLUS Rounded 1c", serif;
+  margin-top: 10px;
 }
 
-.holiday-button {
+.holiday-button,
+.holiday-button-today {
   display: inline-block;
   padding: 10px 20px;
   background-color: #000000;
@@ -111,7 +117,12 @@ a .holiday-card {
   margin-top: 10px;
 }
 
-.holiday-button:hover {
+.holiday-button-today {
+  margin: 0px 150px;
+}
+
+.holiday-button:hover,
+.holiday-button-today:hover {
   background-color: #ffffff;
   color: #000000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -121,6 +132,14 @@ a .holiday-card {
 @media (max-width: 768px) {
   .holiday-viewer {
     flex-direction: column; /* Stack sections on smaller screens */
+  }
+
+  .holiday-button-today {
+    margin: 0px 50px;
+  }
+
+  .holiday-heading {
+    font-size: 1.5em;
   }
 
   .holiday-section {

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Holiday Calendar
- * Description:      A WordPress plugin for managing holidays.
+ * Description:      Holiday Calendar is a WordPress plugin that allows you to add holidays with name, description, image, and page link. The plugin will show holidays according to their dates and also show past and upcoming holidays. It's a simple and efficient way to keep track of holidays and events.
  * Version:           1.0.0
  * Author:            Tareq Monower
  * Author URI:        https://profiles.wordpress.org/tamimh/

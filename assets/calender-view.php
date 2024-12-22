@@ -60,6 +60,7 @@ $upcoming_query = new WP_Query($upcoming_args);
     <!-- Past Holiday Section -->
     <div class="holiday-section past-holiday" style="flex: 0 0 25%; padding: 10px;">
         <h3 class="holiday-heading">Past Holiday</h3>
+
         <?php if ($past_query->have_posts()) : ?>
         <?php while ($past_query->have_posts()) : $past_query->the_post(); ?>
         <div class="holiday-card">
@@ -101,7 +102,7 @@ $upcoming_query = new WP_Query($upcoming_args);
                     $button_text = get_post_meta(get_the_ID(), '_holiday_button_text', true);
                     $page_link = get_post_meta(get_the_ID(), '_holiday_page_link', true);
                     if ($button_text && $page_link) {
-                        echo '<a href="' . esc_url($page_link) . '" class="holiday-button" >' . esc_html($button_text) . '</a>';
+                        echo '<a href="' . esc_url($page_link) . '" class="holiday-button-today" >' . esc_html($button_text) . '</a>';
                     }
                     ?>
         </div>
@@ -114,7 +115,7 @@ $upcoming_query = new WP_Query($upcoming_args);
 
     <!-- Upcoming Holidays Section -->
     <div class="holiday-section upcoming-holidays" style="flex: 0 0 25%; padding: 10px;">
-        <h3 class="holiday-heading">Upcoming Holidays</h3>
+        <h3 class="holiday-heading">Upcoming Holiday</h3>
         <?php if ($upcoming_query->have_posts()) : ?>
         <?php while ($upcoming_query->have_posts()) : $upcoming_query->the_post(); ?>
         <div class="holiday-card">
