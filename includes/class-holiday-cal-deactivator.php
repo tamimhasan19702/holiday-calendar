@@ -1,5 +1,5 @@
 <?php
-class Custom_Location_Banner_Deactivator
+class Holiday_Cal_Deactivator
 {
     public static function deactivate()
     {

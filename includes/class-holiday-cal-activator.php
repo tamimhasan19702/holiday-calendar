@@ -1,5 +1,5 @@
 <?php
-class Custom_Location_Banner_Activator
+class Holiday_Cal_Activator
 {
     public static function activate()
     {
