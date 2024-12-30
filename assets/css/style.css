@@ -55,12 +55,13 @@
   width: 100%; /* Full width of the section */
   display: flex;
   gap: 10px;
-  flex-direction: column; /* Stack title, date, and description vertically */
+  flex-direction: column;
+  align-items: center; /* Stack title, date, and description vertically */
 }
 
 .today-holiday .holiday-card img {
   width: 100%; /* Full width for the image */
-  height: 200px; /* Fixed height for the image */
+  height: 100%; /* Fixed height for the image */
   object-fit: cover; /* Cover the area without distortion */
   border-radius: 10px;
 }

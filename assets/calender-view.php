@@ -4,55 +4,49 @@ $today = gmdate('Y-m-d H:i:s');
 $today_date = gmdate('Y-m-d');
 
 // Query for today's holiday
-$today_args = array(
+$today_query = new WP_Query(array(
     'post_type' => 'holiday',
+    'posts_per_page' => 1,
     'meta_query' => array(
         array(
             'key' => '_holiday_date',
             'value' => $today_date,
             'compare' => '=',
-            'type' => 'DATE'
+            'type' => 'DATE',
         ),
     ),
-);
-
-// Execute today's holiday query
-$today_query = new WP_Query($today_args);
+));
 
 // Prepare queries for past and upcoming holidays
-$past_args = array(
+$past_query = new WP_Query(array(
     'post_type' => 'holiday',
+    'posts_per_page' => 1,
     'meta_query' => array(
         array(
             'key' => '_holiday_date',
             'value' => $today_date,
             'compare' => '<',
-            'type' => 'DATE'
+            'type' => 'DATE',
         ),
     ),
-    'orderby' => 'meta_value',
+    'orderby' => 'meta_value', // Ensure this is set to 'meta_value'
     'order' => 'DESC',
-    'posts_per_page' => 1 // Limit to 1 past holiday
-);
+));
 
-$upcoming_args = array(
+$upcoming_query = new WP_Query(array(
     'post_type' => 'holiday',
+    'posts_per_page' => 1,
     'meta_query' => array(
         array(
             'key' => '_holiday_date',
             'value' => $today_date,
             'compare' => '>',
-            'type' => 'DATE'
+            'type' => 'DATE',
         ),
     ),
-    'orderby' => 'meta_value',
+    'orderby' => 'meta_value', // Ensure this is set to 'meta_value'
     'order' => 'ASC',
-    'posts_per_page' => 1 // Limit to 1 upcoming holiday
-);
-
-// Execute past and upcoming holiday queries
-$past_query = new WP_Query($past_args);
-$upcoming_query = new WP_Query($upcoming_args);
+));
 ?>
 
 <div class="holiday-viewer" style="display: flex; flex-direction: row;">
@@ -66,14 +60,15 @@ $upcoming_query = new WP_Query($upcoming_args);
         <div class="holiday-card">
             <h4 class="holiday-title"><?php the_title(); ?></h4>
             <p class="holiday-date">
-                <?php echo date('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true))); ?>
+                <?php echo esc_html(gmdate('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true)))); ?>
             </p>
             <?php
-                    // Get button text and page link
+                    // Get button text, page link, and custom class
                     $button_text = get_post_meta(get_the_ID(), '_holiday_button_text', true);
                     $page_link = get_post_meta(get_the_ID(), '_holiday_page_link', true);
+                    $custom_class = get_post_meta(get_the_ID(), '_holiday_custom_class', true); // Retrieve custom class
                     if ($button_text && $page_link) {
-                        echo '<a href="' . esc_url($page_link) . '" class="holiday-button" >' . esc_html($button_text) . '</a>';
+                        echo '<a href="' . esc_url($page_link) . '" class="holiday-button ' . esc_attr($custom_class) . '">' . esc_html($button_text) . '</a>';
                     }
                     ?>
         </div>
@@ -89,29 +84,31 @@ $upcoming_query = new WP_Query($upcoming_args);
         <?php if ($today_query->have_posts()) : ?>
         <?php while ($today_query->have_posts()) : $today_query->the_post(); ?>
         <div class="holiday-card">
-            <h4 class="holiday-title"><?php the_title(); ?></h4>
+            <h4 class="holiday-title"><?php esc_html(the_title()); ?></h4>
             <p class="holiday-date">
-                <?php echo date('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true))); ?>
+                <?php echo esc_html(gmdate('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true)))); ?>
             </p>
-            <?php echo get_the_post_thumbnail(get_the_ID(), 'medium', array('class' => 'holiday-image')); ?>
+            <?php echo wp_kses_post(get_the_post_thumbnail(get_the_ID(), 'medium', array('class' => 'holiday-image'))); ?>
             <div class="holiday-description">
-                <?php echo wpautop(get_the_content(), true); ?>
+                <?php echo wp_kses_post(wpautop(get_the_content())); ?>
             </div>
             <?php
-                    // Get button text and page link
+                    // Get button text, page link, and custom class
                     $button_text = get_post_meta(get_the_ID(), '_holiday_button_text', true);
                     $page_link = get_post_meta(get_the_ID(), '_holiday_page_link', true);
+                    $custom_class = get_post_meta(get_the_ID(), '_holiday_custom_class', true); // Retrieve custom class
                     if ($button_text && $page_link) {
-                        echo '<a href="' . esc_url($page_link) . '" class="holiday-button-today" >' . esc_html($button_text) . '</a>';
+                        echo '<a href="' . esc_url($page_link) . '" class="holiday-button-today ' . esc_attr($custom_class) . '">' . esc_html($button_text) . '</a>';
                     }
                     ?>
         </div>
         <?php endwhile; ?>
         <?php else : ?>
-        <p class="current-date"><?php echo date('j F Y'); ?></p>
+        <p class="current-date"><?php echo esc_html(gmdate('j F Y')); ?></p>
         <p class="current-no-holidays">No holiday today.</p>
         <?php endif; ?>
     </div>
+
 
     <!-- Upcoming Holidays Section -->
     <div class="holiday-section upcoming-holidays" style="flex: 0 0 25%; padding: 10px;">
@@ -121,14 +118,15 @@ $upcoming_query = new WP_Query($upcoming_args);
         <div class="holiday-card">
             <h4 class="holiday-title"><?php the_title(); ?></h4>
             <p class="holiday-date">
-                <?php echo date('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true))); ?>
+                <?php echo esc_html(gmdate('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true)))); ?>
             </p>
             <?php
-                    // Get button text and page link
+                    // Get button text, page link, and custom class
                     $button_text = get_post_meta(get_the_ID(), '_holiday_button_text', true);
                     $page_link = get_post_meta(get_the_ID(), '_holiday_page_link', true);
+                    $custom_class = get_post_meta(get_the_ID(), '_holiday_custom_class', true); // Retrieve custom class
                     if ($button_text && $page_link) {
-                        echo '<a href="' . esc_url($page_link) . '" class="holiday-button" >' . esc_html($button_text) . '</a>';
+                        echo '<a href="' . esc_url($page_link) . '" class="holiday-button ' . esc_attr($custom_class) . '">' . esc_html($button_text) . '</a>';
                     }
                     ?>
         </div>
