@@ -55,84 +55,105 @@ $upcoming_query = new WP_Query(array(
     <div class="holiday-section past-holiday" style="flex: 0 0 25%; padding: 10px;">
         <h3 class="holiday-heading">Past Holiday</h3>
 
-        <?php if ($past_query->have_posts()) : ?>
-        <?php while ($past_query->have_posts()) : $past_query->the_post(); ?>
-        <div class="holiday-card">
-            <h4 class="holiday-title"><?php the_title(); ?></h4>
-            <p class="holiday-date">
-                <?php echo esc_html(gmdate('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true)))); ?>
-            </p>
-            <?php
+        <?php if ($past_query->have_posts()): ?>
+            <?php while ($past_query->have_posts()):
+                $past_query->the_post(); ?>
+                <div class="holiday-card">
+                    <h4 class="holiday-title"><?php the_title(); ?></h4>
+                    <p class="holiday-date">
+                        <?php
+                        $holiday_date = get_post_meta(get_the_ID(), '_holiday_date', true);
+                        echo esc_html(gmdate('j F Y', strtotime($holiday_date)));
+                        ?>
+                    </p>
+                    <?php
+                    // Calculate days since the past holiday
+                    $past_date = strtotime($holiday_date);
+                    $today = strtotime(gmdate('Y-m-d'));
+                    $days_since = ($today - $past_date) / (60 * 60 * 24); // Convert seconds to days
+                    echo '<div class="days days-since"> <span class="highlight">' . esc_html($days_since) . '</span> <span class="highlight-text">Days since<span></div>';
+
                     // Get button text, page link, and custom class
                     $button_text = get_post_meta(get_the_ID(), '_holiday_button_text', true);
                     $page_link = get_post_meta(get_the_ID(), '_holiday_page_link', true);
-                    $custom_class = get_post_meta(get_the_ID(), '_holiday_custom_class', true); // Retrieve custom class
+                    $custom_class = get_post_meta(get_the_ID(), '_holiday_custom_class', true);
                     if ($button_text && $page_link) {
                         echo '<a href="' . esc_url($page_link) . '" class="holiday-button ' . esc_attr($custom_class) . '">' . esc_html($button_text) . '</a>';
                     }
                     ?>
-        </div>
-        <?php endwhile; ?>
-        <?php else : ?>
-        <p class="no-holidays">No past holidays found.</p>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p class="no-holidays">No past holidays found.</p>
         <?php endif; ?>
     </div>
 
     <!-- Today's Holiday Section -->
     <div class="holiday-section today-holiday" style="flex: 0 0 50%; padding: 10px;">
         <h3 class="holiday-heading">Today's Holiday</h3>
-        <?php if ($today_query->have_posts()) : ?>
-        <?php while ($today_query->have_posts()) : $today_query->the_post(); ?>
-        <div class="holiday-card">
-            <h4 class="holiday-title"><?php esc_html(the_title()); ?></h4>
-            <p class="holiday-date">
-                <?php echo esc_html(gmdate('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true)))); ?>
-            </p>
-            <?php echo wp_kses_post(get_the_post_thumbnail(get_the_ID(), 'medium', array('class' => 'holiday-image'))); ?>
-            <div class="holiday-description">
-                <?php echo wp_kses_post(wpautop(get_the_content())); ?>
-            </div>
-            <?php
+        <?php if ($today_query->have_posts()): ?>
+            <?php while ($today_query->have_posts()):
+                $today_query->the_post(); ?>
+                <div class="holiday-card">
+                    <h4 class="holiday-title"><?php esc_html(the_title()); ?></h4>
+                    <p class="holiday-date">
+                        <?php echo esc_html(gmdate('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true)))); ?>
+                    </p>
+                    <?php echo wp_kses_post(get_the_post_thumbnail(get_the_ID(), 'medium', array('class' => 'holiday-image'))); ?>
+                    <div class="holiday-description">
+                        <?php echo wp_kses_post(wpautop(get_the_content())); ?>
+                    </div>
+                    <?php
                     // Get button text, page link, and custom class
                     $button_text = get_post_meta(get_the_ID(), '_holiday_button_text', true);
                     $page_link = get_post_meta(get_the_ID(), '_holiday_page_link', true);
-                    $custom_class = get_post_meta(get_the_ID(), '_holiday_custom_class', true); // Retrieve custom class
+                    $custom_class = get_post_meta(get_the_ID(), '_holiday_custom_class', true);
                     if ($button_text && $page_link) {
                         echo '<a href="' . esc_url($page_link) . '" class="holiday-button-today ' . esc_attr($custom_class) . '">' . esc_html($button_text) . '</a>';
                     }
                     ?>
-        </div>
-        <?php endwhile; ?>
-        <?php else : ?>
-        <p class="current-date"><?php echo esc_html(gmdate('j F Y')); ?></p>
-        <p class="current-no-holidays">No holiday today.</p>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p class="current-date"><?php echo esc_html(gmdate('j F Y')); ?></p>
+            <p class="current-no-holidays">No holiday today.</p>
         <?php endif; ?>
     </div>
-
 
     <!-- Upcoming Holidays Section -->
     <div class="holiday-section upcoming-holidays" style="flex: 0 0 25%; padding: 10px;">
         <h3 class="holiday-heading">Upcoming Holiday</h3>
-        <?php if ($upcoming_query->have_posts()) : ?>
-        <?php while ($upcoming_query->have_posts()) : $upcoming_query->the_post(); ?>
-        <div class="holiday-card">
-            <h4 class="holiday-title"><?php the_title(); ?></h4>
-            <p class="holiday-date">
-                <?php echo esc_html(gmdate('j F Y', strtotime(get_post_meta(get_the_ID(), '_holiday_date', true)))); ?>
-            </p>
-            <?php
+        <?php if ($upcoming_query->have_posts()): ?>
+            <?php while ($upcoming_query->have_posts()):
+                $upcoming_query->the_post();
+                $holiday_date = get_post_meta(get_the_ID(), '_holiday_date', true);
+                $upcoming_date = strtotime($holiday_date);
+                $today = strtotime(gmdate('Y-m-d'));
+                $days_left = ($upcoming_date - $today) / (60 * 60 * 24); // Convert seconds to days
+                ?>
+                <div class="holiday-card">
+                    <h4 class="holiday-title"><?php esc_html(the_title()); ?></h4>
+                    <p class="holiday-date">
+                        <?php echo esc_html(gmdate('j F Y', $upcoming_date)); ?>
+                    </p>
+                    <div class="days days-left">
+                        <span class="highlight"><?php echo esc_html($days_left); ?></span>
+                        <span class="highlight-text">Days left</span>
+                    </div>
+
+                    <?php
                     // Get button text, page link, and custom class
                     $button_text = get_post_meta(get_the_ID(), '_holiday_button_text', true);
                     $page_link = get_post_meta(get_the_ID(), '_holiday_page_link', true);
-                    $custom_class = get_post_meta(get_the_ID(), '_holiday_custom_class', true); // Retrieve custom class
+                    $custom_class = get_post_meta(get_the_ID(), '_holiday_custom_class', true);
                     if ($button_text && $page_link) {
                         echo '<a href="' . esc_url($page_link) . '" class="holiday-button ' . esc_attr($custom_class) . '">' . esc_html($button_text) . '</a>';
                     }
                     ?>
-        </div>
-        <?php endwhile; ?>
-        <?php else : ?>
-        <p class="no-holidays">No upcoming holidays found.</p>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p class="no-holidays">No upcoming holidays found.</p>
         <?php endif; ?>
     </div>
 </div>
