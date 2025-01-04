@@ -56,10 +56,15 @@ if ($holiday_info['recent_upcoming_holiday']) {
                     <?php echo esc_html(gmdate('j F Y')); ?>
                 </p>
                 <!-- Display the featured image -->
-                <?php if (!empty($holiday_info['today_holiday']['image'])): ?>
-                    <img src="<?php echo esc_url($holiday_info['today_holiday']['image']); ?>"
-                        alt="<?php echo esc_attr($holiday_info['today_holiday']['title']); ?>" class="holiday-image" />
-                <?php endif; ?>
+                <?php
+                if (!empty($holiday_info['today_holiday']['image'])):
+                    $image_id = (int) $holiday_info['today_holiday']['image'];
+                    $image_html = wp_get_attachment_image($image_id, 'medium', false, array(
+                        'class' => 'holiday-image',
+                        'alt' => esc_attr($holiday_info['today_holiday']['title']),
+                    ));
+                    echo esc_html($image_html);
+                endif; ?>
                 <div class="holiday-description"><?php echo wp_kses_post($holiday_info['today_holiday']['description']); ?>
                 </div>
                 <a href="<?php echo esc_url($holiday_info['today_holiday']['page_link']); ?>"

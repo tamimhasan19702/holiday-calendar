@@ -13,7 +13,6 @@ class Holiday_Cal_Main
         add_action('add_meta_boxes', array($this, 'hv_add_holiday_meta_box'));
         add_action('save_post', array($this, 'hv_save_holiday_data'));
         add_shortcode('holiday_viewer', array($this, 'hv_display_holiday_shortcode'));
-
         add_action('admin_notices', array($this, 'hv_display_shortcode_on_admin_edit'));
 
 
@@ -104,8 +103,8 @@ class Holiday_Cal_Main
         echo '<div id="holiday_dates_container">';
         foreach ($holiday_dates as $index => $date) {
             echo '<div class="date-field">';
-            echo '<label for="holiday_date_' . $index . '">Holiday Date:</label>';
-            echo '<input type="date" id="holiday_date_' . $index . '" name="holiday_dates[]" value="' . esc_attr($date) . '" />';
+            echo '<label for="holiday_date_' . esc_attr($index) . '">Holiday Date:</label>';
+            echo '<input type="date" id="holiday_date_' . esc_attr($index) . '" name="holiday_dates[]" value="' . esc_attr($date) . '" />';
             echo '<button type="button" class="button remove" style="margin-left: 10px;" onclick="removeDateField(this)">Remove</button>';
             echo '</div>';
         }
@@ -210,21 +209,35 @@ class Holiday_Cal_Main
     }
 
     // Enqueue styles for the plugin.
-    public function hv_enqueue_styles()
-    {
-        wp_enqueue_style('hv-styles', plugin_dir_url(__FILE__) . 'assets/css/style.css', array(), HOLIDAY_CAL_VERSION);
-    }
+
 
     // Display the shortcode on the admin edit page for the holiday post type.
     public function hv_display_shortcode_on_admin_edit()
     {
         // Check if the user is currently viewing the admin edit page for the holiday post type
         if (isset($_GET['post_type']) && $_GET['post_type'] === 'holiday') {
+            // Create a nonce for verification
+            $nonce = wp_create_nonce('holiday_shortcode_nonce');
+
             // Prepare the shortcode
             $shortcode = '[holiday_viewer]';
             echo '<div class="notice notice-info is-dismissible" style="margin: 20px 0;">';
             echo '<p><strong>Use the following shortcode to view the holiday calendar:</strong> <code>' . esc_html($shortcode) . '</code></p>';
+            echo '<p><button class="button holiday-shortcode-button" data-nonce="' . esc_attr($nonce) . '" onclick="copyToClipboard(\'' . esc_js($shortcode) . '\')">Copy Shortcode</button></p>';
             echo '</div>';
+            echo '<script>
+                function copyToClipboard(text) {
+                    var tempInput = document.createElement("input");
+                    tempInput.style.position = "absolute";
+                    tempInput.style.left = "-9999px";
+                    tempInput.value = text;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(tempInput);
+                    alert("Shortcode copied to clipboard");
+                }
+            </script>';
         }
     }
 
