@@ -20,6 +20,18 @@
   min-width: 250px; /* Set a minimum width to prevent shrinking too much */
 }
 
+.past-holiday {
+  flex: 0 0 25%; /* 25% width for past holiday */
+}
+
+.today-holiday {
+  flex: 0 0 50%; /* 50% width for today's holiday */
+}
+
+.upcoming-holidays {
+  flex: 0 0 25%; /* 25% width for upcoming holiday */
+}
+
 .holiday-card {
   background-color: #fff; /* White background for the card */
   border-radius: 10px; /* Rounded corners */
