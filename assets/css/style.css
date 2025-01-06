@@ -3,34 +3,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=M+PLUS+Rounded+1c&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+DE+VA+Guides&display=swap");
 
 .holiday-viewer {
-  display: flex;
-  flex-direction: row;
-  align-items: center; /* Align items to the start to prevent overflow */
-  justify-content: space-between; /* Space out sections evenly */
-  gap: 20px;
-  overflow: hidden; /* Prevent overflow */
-  margin: 0px 80px;
+  display: grid;
+  grid-template-columns: 25% 50% 25%; /* Define column sizes */
+  gap: 10px; /* Gap between grid items */
+  margin: 0; /* Remove side margins */
+  width: 100%; /* Ensure full width */
+  padding: 0px 40px;
 }
 
 .holiday-section {
-  padding: 5px 20px;
+  padding: 5px 10px;
   text-align: center;
   border-radius: 20px;
-  flex: 1; /* Allow sections to grow equally */
-  min-width: 250px; /* Set a minimum width to prevent shrinking too much */
 }
 
-.past-holiday {
-  flex: 0 0 25%; /* 25% width for past holiday */
-}
-
-.today-holiday {
-  flex: 0 0 50%; /* 50% width for today's holiday */
-}
-
+/* .past-holiday,
+.today-holiday,
 .upcoming-holidays {
-  flex: 0 0 25%; /* 25% width for upcoming holiday */
-}
+  flex: 1; /* Allow sections to grow equally 
+} */
 
 .holiday-card {
   background-color: #fff; /* White background for the card */
@@ -56,7 +47,7 @@
 }
 
 .today-holiday .holiday-card {
-  width: 100%; /* Full width of the section */
+  /* Full width of the section */
   display: flex;
   gap: 10px;
   flex-direction: column;
@@ -155,8 +146,9 @@
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .holiday-viewer {
-    flex-direction: column !important;
-    margin: 0px; /* Stack sections on smaller screens */
+    grid-template-columns: 1fr; /* Stack sections on smaller screens */
+    width: 100%; /* Ensure full width */
+    padding: 0px;
   }
 
   .holiday-button-today {
