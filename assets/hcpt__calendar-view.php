@@ -95,7 +95,7 @@ if ($hcpt__holiday_info['recent_upcoming_holiday']) {
                     if (isset($hcpt__holiday_info['recent_upcoming_holiday']['date'])) {
                         echo esc_html(gmdate('j F Y', strtotime($hcpt__holiday_info['recent_upcoming_holiday']['date'])));
                     } else {
-                        echo esc_html('Date not available', 'holiday-calendar');
+                        echo esc_html__('Date not available', 'holiday-calendar');
                     }
                     ?>
                 </p>

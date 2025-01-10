@@ -1,30 +1,30 @@
 /** @format */
 
-let dateFieldIndex = 0;
+let hcpt__dateFieldIndex = 0;
 
-function addDateField() {
-  const container = document.getElementById("holiday_dates_container");
+function hcpt__addDateField() {
+  const container = document.getElementById("hcpt__holiday_dates_container");
   const newField = document.createElement("div");
-  newField.className = "date-field";
+  newField.className = "hcpt__date-field";
   newField.style.marginBottom = "20px";
   newField.innerHTML =
-    '<label for="holiday_date_' +
-    dateFieldIndex +
+    '<label for="hcpt__holiday_date_' +
+    hcpt__dateFieldIndex +
     '">Holiday Date:</label>' +
-    '<input type="date" id="holiday_date_' +
-    dateFieldIndex +
-    '" name="holiday_dates[]" />' +
-    '<button type="button" class="button remove" style="margin-left: 10px;" onclick="removeDateField(this)">Remove</button>';
+    '<input type="date" id="hcpt__holiday_date_' +
+    hcpt__dateFieldIndex +
+    '" name="hcpt__holiday_dates[]" />' +
+    '<button type="button" class="hcpt__button hcpt__remove" style="margin-left: 10px;" onclick="hcpt__removeDateField(this)">Remove</button>';
   container.appendChild(newField);
-  dateFieldIndex++;
+  hcpt__dateFieldIndex++;
 }
 
-function removeDateField(button) {
+function hcpt__removeDateField(button) {
   const field = button.parentElement;
   field.parentElement.removeChild(field);
 }
 
-function copyToClipboard(text) {
+function hcpt__copyToClipboard(text) {
   var tempInput = document.createElement("input");
   tempInput.style.position = "absolute";
   tempInput.style.left = "-9999px";
