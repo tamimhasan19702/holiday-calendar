@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('ABSPATH'))
+    exit;
+
+
 $hcpt__today_date = gmdate('Y-m-d');
 include_once __DIR__ . '/hcpt__query-data.php';
 
@@ -91,7 +95,7 @@ if ($hcpt__holiday_info['recent_upcoming_holiday']) {
                     if (isset($hcpt__holiday_info['recent_upcoming_holiday']['date'])) {
                         echo esc_html(gmdate('j F Y', strtotime($hcpt__holiday_info['recent_upcoming_holiday']['date'])));
                     } else {
-                        echo __('Date not available', 'holiday-calendar');
+                        echo esc_html('Date not available', 'holiday-calendar');
                     }
                     ?>
                 </p>

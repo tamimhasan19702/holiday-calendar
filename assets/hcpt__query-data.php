@@ -1,5 +1,8 @@
 <?php
 
+if (!defined('ABSPATH'))
+    exit;
+
 function hcpt__get_holiday_info()
 {
     $hcpt__today_date = gmdate('Y-m-d');
@@ -88,4 +91,3 @@ function hcpt__get_holiday_info()
 $hcpt__holiday_info = hcpt__get_holiday_info();
 
 // Output the results
-?>

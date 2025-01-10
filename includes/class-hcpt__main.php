@@ -60,7 +60,7 @@ class HCPT__Main
         </div>
         <label for="holiday_page_link">Button Link:</label>
         <input type="url" id="holiday_page_link" name="holiday_page_link"
-            value="<?php echo esc_attr(get_post_meta($post->ID, '_holiday_page_link', true)); ?>" />
+            value="<?php echo esc_url(get_post_meta($post->ID, '_holiday_page_link', true)); ?>" />
         <label for="holiday_button_text">Button Text:</label>
         <input type="text" id="holiday_button_text" name="holiday_button_text"
             value="<?php echo esc_attr(get_post_meta($post->ID, '_holiday_button_text', true)); ?>" />
@@ -69,7 +69,7 @@ class HCPT__Main
             value="<?php echo esc_attr(get_post_meta($post->ID, '_holiday_custom_class', true)); ?>" />
         <?php
         // End output buffering and output the content
-        echo ob_get_clean();
+        echo wp_kses_post(ob_get_clean());
     }
 
     // Save the holiday data.
