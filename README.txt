@@ -3,7 +3,7 @@ Contributors: tamimh
 Tags: holiday, calendar, wordpress-plugin
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 1.0.1
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,17 @@ To use the plugin, go to **Holiday Calendar > Add Holiday** in WordPress, enter 
 
 == Changelog ==
 
+= 1.0.3 =
+* Fixed the text domain issue to ensure proper localization.
+* Updated the custom post meta type for better data handling.
+* Updated the prefixed shortcode for improved functionality.
+
+= 1.0.2 =
+* Fixed all necessary security issues.
+* Added personalized prefix to the codebase.
+* Separated admin styles and scripts for better management.
+* Updated the codebase for improved performance and maintainability.
+
 = 1.0.1 =
 * Updated functionality to allow users to add multiple dates for a holiday.
 * Improved frontend display to show recent past, today, and upcoming holidays.
@@ -60,5 +71,8 @@ To use the plugin, go to **Holiday Calendar > Add Holiday** in WordPress, enter 
 
 == Upgrade Notice ==
 
-= 1.0.1 =
-Added support for multiple dates per holiday and improved the frontend display and styles.
+= 1.0.3 =
+Fixed the text domain issue, updated the custom post meta type, and updated the prefixed shortcode for improved functionality.
+
+= 1.0.2 =
+Fixed security issues, added personalized prefix, separated admin styles and scripts, and updated the codebase for better performance and maintainability.
