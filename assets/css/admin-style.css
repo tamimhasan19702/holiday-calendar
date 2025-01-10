@@ -47,3 +47,13 @@
   color: #dc3232;
   font-weight: bold;
 }
+
+.hcpt__holiday-shortcode-button {
+  background-color: #0073aa;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: pointer;
+  padding: 10px 15px;
+}

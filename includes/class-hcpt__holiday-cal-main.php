@@ -167,6 +167,7 @@ class HCPT__Holiday_Cal_Main
             // Start output buffering
             ob_start();
             ?>
+
             <div class="notice notice-info is-dismissible" style="margin: 20px 0;">
                 <p><strong>Use the following shortcode to view the holiday calendar:</strong>
                     <code><?php echo esc_html($shortcode); ?></code>
@@ -177,7 +178,9 @@ class HCPT__Holiday_Cal_Main
 
             <?php
             // End output buffering and output the content
-            echo esc_html(ob_get_clean());
+            add_action('admin_notices', function () {
+                echo ob_get_clean();
+            });
         }
     }
 
