@@ -1,7 +1,7 @@
 <?php
-class Holiday_Cal_Activator
+class HCPT__Deactivator
 {
-    public static function activate()
+    public static function deactivate()
     {
         // Actions to perform during activation, such as setting default options
     }
