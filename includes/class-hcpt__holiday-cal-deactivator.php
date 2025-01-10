@@ -1,5 +1,5 @@
 <?php
-class Holiday_Cal_Deactivator
+class HCPT__Holiday_Cal_Deactivator
 {
     public static function deactivate()
     {

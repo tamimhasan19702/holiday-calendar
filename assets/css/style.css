@@ -2,105 +2,122 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=M+PLUS+Rounded+1c&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+DE+VA+Guides&display=swap");
 
-.holiday-viewer {
+.hcpt__holiday-viewer {
   display: grid;
-  grid-template-columns: 25% 50% 25%; /* Define column sizes */
-  gap: 10px; /* Gap between grid items */
-  margin: 0; /* Remove side margins */
-  width: 100%; /* Ensure full width */
+  grid-template-columns: 25% 50% 25%;
+  /* Define column sizes */
+  gap: 10px;
+  /* Gap between grid items */
+  margin: 0;
+  /* Remove side margins */
+  width: 100%;
+  /* Ensure full width */
   padding: 0px 40px;
 }
 
-.holiday-section {
+.hcpt__holiday-section {
   padding: 5px 10px;
   text-align: center;
   border-radius: 20px;
 }
 
-/* .past-holiday,
-.today-holiday,
-.upcoming-holidays {
-  flex: 1; /* Allow sections to grow equally 
-} */
-
-.holiday-card {
-  background-color: #fff; /* White background for the card */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  overflow: hidden; /* Ensure the border-radius is applied to the image */
-  margin-bottom: 20px; /* Space between cards */
+.hcpt__holiday-card {
+  background-color: #fff;
+  /* White background for the card */
+  border-radius: 10px;
+  /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+  overflow: hidden;
+  /* Ensure the border-radius is applied to the image */
+  margin-bottom: 20px;
+  /* Space between cards */
   padding: 20px;
 }
 
-.holiday-heading {
+.hcpt__holiday-heading {
   font-family: "Dancing Script", serif;
   font-size: 1.5em;
   position: relative;
   display: inline-block;
 }
 
-.holiday-date {
+.hcpt__holiday-date {
   font-family: "M PLUS Rounded 1c", serif;
   font-weight: 600;
   font-style: normal;
   color: black;
 }
 
-.today-holiday .holiday-card {
+.hcpt__today-holiday .hcpt__holiday-card {
   /* Full width of the section */
   display: flex;
   gap: 10px;
   flex-direction: column;
-  align-items: center; /* Stack title, date, and description vertically */
+  align-items: center;
+  /* Stack title, date, and description vertically */
 }
 
-.today-holiday .holiday-card img {
-  width: 100%; /* Full width for the image */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Cover the area without distortion */
+.hcpt__today-holiday .hcpt__holiday-card img {
+  width: 100%;
+  /* Full width for the image */
+  height: auto;
+  /* Maintain aspect ratio */
+  object-fit: cover;
+  /* Cover the area without distortion */
   border-radius: 10px;
 }
 
-.holiday-title {
-  font-size: 2em; /* Title size */
-  margin: 10px 0; /* Margin for spacing */
+.hcpt__holiday-title {
+  font-size: 2em;
+  /* Title size */
+  margin: 10px 0;
+  /* Margin for spacing */
   font-family: "montserrat", sans-serif;
   color: #000000;
 }
 
-.current-date {
+.hcpt__current-date {
   font-size: 2em;
   font-family: "Montserrat", serif;
   color: black;
 }
 
-.holiday-date {
-  font-size: 1em; /* Date size */
-  color: #000000; /* Subtle color for the date */
+.hcpt__holiday-date {
+  font-size: 1em;
+  /* Date size */
+  color: #000000;
+  /* Subtle color for the date */
 }
 
-.no-holidays {
-  font-size: 0.8em; /* No holidays message size */
-  color: #666; /* Subtle color for the message */
+.hcpt__no-holidays {
+  font-size: 0.8em;
+  /* No holidays message size */
+  color: #666;
+  /* Subtle color for the message */
   font-family: "Montserrat", serif;
 }
 
-.current-no-holidays {
-  font-size: 1.2em; /* No holidays message size */
-  color: #000000; /* Subtle color for the message */
+.hcpt__current-no-holidays {
+  font-size: 1.2em;
+  /* No holidays message size */
+  color: #000000;
+  /* Subtle color for the message */
   font-family: "Montserrat", serif;
   font-weight: 600;
 }
 
-.holiday-description {
-  font-size: 1em; /* Description size */
-  color: #000000; /* Darker color for the description */
+.hcpt__holiday-description {
+  font-size: 1em;
+  /* Description size */
+  color: #000000;
+  /* Darker color for the description */
   font-family: "Montserrat", serif;
   margin-top: 10px;
 }
 
-.holiday-button,
-.holiday-button-today {
+.hcpt__holiday-button,
+.hcpt__holiday-button-today {
   display: inline-block;
   padding: 10px 20px;
   background-color: #000000;
@@ -114,30 +131,30 @@
   margin-top: 10px;
 }
 
-.holiday-button-today {
+.hcpt__holiday-button-today {
   margin: 0px 150px;
 }
 
-.holiday-button:hover,
-.holiday-button-today:hover {
+.hcpt__holiday-button:hover,
+.hcpt__holiday-button-today:hover {
   background-color: #ffffff;
   color: #000000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.days {
+.hcpt__days {
   display: flex;
   flex-direction: column;
 }
 
-.highlight {
+.hcpt__highlight {
   font-weight: bold;
   font-size: 2em;
   color: #000000;
   font-family: "Montserrat", sans-serif;
 }
 
-.highlight-text {
+.hcpt__highlight-text {
   font-size: 1.5em;
   color: #000000;
   font-family: "Dancing Script", serif;
@@ -145,21 +162,24 @@
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-  .holiday-viewer {
-    grid-template-columns: 1fr; /* Stack sections on smaller screens */
-    width: 100%; /* Ensure full width */
+  .hcpt__holiday-viewer {
+    grid-template-columns: 1fr;
+    /* Stack sections on smaller screens */
+    width: 100%;
+    /* Ensure full width */
     padding: 0px;
   }
 
-  .holiday-button-today {
+  .hcpt__holiday-button-today {
     margin: 0px 50px;
   }
 
-  .holiday-heading {
+  .hcpt__holiday-heading {
     font-size: 1.5em;
   }
 
-  .holiday-section {
-    width: 100%; /* Full width for each section */
+  .hcpt__holiday-section {
+    width: 100%;
+    /* Full width for each section */
   }
 }

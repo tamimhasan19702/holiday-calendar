@@ -14,54 +14,44 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-
 if (!defined('WPINC')) {
     die;
 }
 
-define('HOLIDAY_CAL_VERSION', '1.0.0');
+define('HCPT__HOLIDAY_CAL_VERSION', '1.0.0');
 
-
-
-function holiday_cal_activate()
+function hcpt__holiday_cal_activate()
 {
-    require_once plugin_dir_path(__FILE__) . 'includes/class-holiday-cal-activator.php';
+    require_once plugin_dir_path(__FILE__) . 'includes/class-hcpt__holiday-cal-activator.php';
 
-    Holiday_Cal_Activator::activate();
+    HCPT__Holiday_Cal_Activator::activate();
 }
 
-
-
-function holiday_cal_deactivate()
+function hcpt__holiday_cal_deactivate()
 {
-    require_once plugin_dir_path(__FILE__) . 'includes/class-holiday-cal-deactivator.php';
+    require_once plugin_dir_path(__FILE__) . 'includes/class-hcpt__holiday-cal-deactivator.php';
 
-    Holiday_Cal_Deactivator::deactivate();
+    HCPT__Holiday_Cal_Deactivator::deactivate();
 }
 
+register_activation_hook(__FILE__, 'hcpt__holiday_cal_activate');
+register_deactivation_hook(__FILE__, 'hcpt__holiday_cal_deactivate');
 
-register_activation_hook(__FILE__, 'holiday_cal_activate');
-register_deactivation_hook(__FILE__, 'holiday_cal_deactivate');
+require_once plugin_dir_path(__FILE__) . 'includes/class-hcpt__holiday-cal-main.php';
 
-
-require_once plugin_dir_path(__FILE__) . 'includes/class-holiday-cal-main.php';
-
-
-
-function hv_enqueue_styles()
+function hcpt__enqueue_styles()
 {
-    wp_enqueue_style('hv-styles', plugin_dir_url(__FILE__) . 'assets/css/style.css', array(), filemtime(plugin_dir_path(__FILE__) . 'assets/css/style.css'));
+    wp_enqueue_style('hcpt__styles', plugin_dir_url(__FILE__) . 'assets/css/style.css', array(), filemtime(plugin_dir_path(__FILE__) . 'assets/css/style.css'));
+    wp_enqueue_script('hcpt__scripts', plugin_dir_url(__FILE__) . 'assets/js/script.js', array('jquery'), filemtime(plugin_dir_path(__FILE__) . 'assets/js/script.js'), true);
 }
 
-add_action('wp_enqueue_scripts', 'hv_enqueue_styles');
+add_action('wp_enqueue_scripts', 'hcpt__enqueue_styles');
 
-
-
-function holiday_cal()
+function hcpt__holiday_cal()
 {
-    $plugin = new Holiday_Cal_Main();
+    $plugin = new HCPT__Holiday_Cal_Main();
 
     $plugin->run();
 }
 
-holiday_cal();
+hcpt__holiday_cal();

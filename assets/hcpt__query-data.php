@@ -1,16 +1,16 @@
 <?php
 
-function get_holiday_info()
+function hcpt__get_holiday_info()
 {
     $today_date = gmdate('Y-m-d');
 
     // Query for all holidays
     $all_holidays_query = new WP_Query(array(
-        'post_type' => 'holiday',
+        'post_type' => 'hcpt__holiday',
         'posts_per_page' => -1, // Get all posts
         'meta_query' => array(
             array(
-                'key' => '_holiday_dates',
+                'key' => 'hcpt__holiday_dates',
                 'compare' => 'EXISTS', // Ensure we only get posts with holiday dates
             ),
         ),
@@ -26,7 +26,7 @@ function get_holiday_info()
             $all_holidays_query->the_post();
 
             // Get the holiday dates
-            $holiday_dates = get_post_meta(get_the_ID(), '_holiday_dates', true);
+            $holiday_dates = get_post_meta(get_the_ID(), 'hcpt__holiday_dates', true);
 
             // Get all the meta values for the current post
             $meta_values = get_post_meta(get_the_ID());
@@ -35,9 +35,9 @@ function get_holiday_info()
             $holiday_data = array(
                 'title' => get_the_title(),
                 'description' => get_the_content(),
-                'page_link' => isset($meta_values['_holiday_page_link'][0]) ? $meta_values['_holiday_page_link'][0] : '',
-                'button_text' => isset($meta_values['_holiday_button_text'][0]) ? $meta_values['_holiday_button_text'][0] : '',
-                'button_class' => isset($meta_values['_holiday_custom_class'][0]) ? $meta_values['_holiday_custom_class'][0] : '',
+                'page_link' => isset($meta_values['hcpt__holiday_page_link'][0]) ? $meta_values['hcpt__holiday_page_link'][0] : '',
+                'button_text' => isset($meta_values['hcpt__holiday_button_text'][0]) ? $meta_values['hcpt__holiday_button_text'][0] : '',
+                'button_class' => isset($meta_values['hcpt__holiday_custom_class'][0]) ? $meta_values['hcpt__holiday_custom_class'][0] : '',
                 'image' => get_the_post_thumbnail_url(get_the_ID(), 'medium'), // Get the thumbnail URL
             );
 
@@ -82,7 +82,7 @@ function get_holiday_info()
 }
 
 // Call the function and store the results
-$holiday_info = get_holiday_info();
+$hcpt__holiday_info = hcpt__get_holiday_info();
 
 // Output the results
 ?>
