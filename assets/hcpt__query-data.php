@@ -1,5 +1,6 @@
 <?php
 
+
 function hcpt__get_holiday_info()
 {
     $today_date = gmdate('Y-m-d');

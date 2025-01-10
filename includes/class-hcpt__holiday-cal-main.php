@@ -1,8 +1,15 @@
 <?php
 
+namespace HCPT;
+
+
+
+
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
+
+
 
 class HCPT__Holiday_Cal_Main
 {
@@ -43,55 +50,7 @@ class HCPT__Holiday_Cal_Main
     {
         wp_nonce_field('hcpt__save_holiday_data', 'hcpt__holiday_data_nonce');
 
-        echo '<style>
-    #hcpt__holiday_details label {
-        display: block;
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
-    #hcpt__holiday_details input {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-    #hcpt__holiday_details .hcpt__date-field {
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-    }
-    #hcpt__holiday_details .hcpt__button {
-        margin-top: 10px;
-        padding: 10px 15px;
-        background-color: #0073aa;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    #hcpt__holiday_details .hcpt__button.hcpt__remove {
-        background-color: #dc3232;
-    }
-    #hcpt__holiday_details .hcpt__button:hover {
-        background-color: #005177;
-    }
-    #hcpt__holiday_details .hcpt__button.hcpt__remove:hover {
-        background-color: #a00;
-    }
-    #hcpt__holiday_dates_container .hcpt__date-field {
-        margin-bottom: 20px;
-    }
-    #hcpt__holiday_dates_container {
-        margin-bottom: 20px;
-    }
-    .hcpt__no-holidays {
-        color: #dc3232;
-        font-weight: bold;
-    }
-</style>';
+
 
         // Retrieve existing holiday dates
         $holiday_dates = get_post_meta($post->ID, 'hcpt__holiday_dates', true);
@@ -115,24 +74,7 @@ class HCPT__Holiday_Cal_Main
 
         // JavaScript for adding/removing date fields
         echo '<script>
-            let hcpt__dateFieldIndex = ' . count($holiday_dates) . ';
-            
-            function hcpt__addDateField() {
-                const container = document.getElementById("hcpt__holiday_dates_container");
-                const newField = document.createElement("div");
-                newField.className = "hcpt__date-field";
-                newField.style.marginBottom = "20px";
-                newField.innerHTML = \'<label for="hcpt__holiday_date_\' + hcpt__dateFieldIndex + \'">Holiday Date:</label>\' +
-                    \'<input type="date" id="hcpt__holiday_date_\' + hcpt__dateFieldIndex + \'" name="hcpt__holiday_dates[]" />\' +
-                    \'<button type="button" class="hcpt__button hcpt__remove" style="margin-left: 10px;" onclick="hcpt__removeDateField(this)">Remove</button>\';
-                container.appendChild(newField);
-                hcpt__dateFieldIndex++;
-            }
-    
-            function hcpt__removeDateField(button) {
-                const field = button.parentElement;
-                field.parentElement.removeChild(field);
-            }
+           
         </script>';
 
         // Page Link

@@ -1,4 +1,6 @@
 <?php
+namespace HCPT;
+
 class HCPT__Holiday_Cal_Activator
 {
     public static function activate()

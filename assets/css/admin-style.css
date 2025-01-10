@@ -1,0 +1,49 @@
+/** @format */
+
+#hcpt__holiday_details label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+#hcpt__holiday_details input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#hcpt__holiday_details .hcpt__date-field {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+#hcpt__holiday_details .hcpt__button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #0073aa;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#hcpt__holiday_details .hcpt__button.hcpt__remove {
+  background-color: #dc3232;
+}
+#hcpt__holiday_details .hcpt__button:hover {
+  background-color: #005177;
+}
+#hcpt__holiday_details .hcpt__button.hcpt__remove:hover {
+  background-color: #a00;
+}
+#hcpt__holiday_dates_container .hcpt__date-field {
+  margin-bottom: 20px;
+}
+#hcpt__holiday_dates_container {
+  margin-bottom: 20px;
+}
+.hcpt__no-holidays {
+  color: #dc3232;
+  font-weight: bold;
+}

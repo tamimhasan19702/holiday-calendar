@@ -1,5 +1,7 @@
 <?php
 
+
+
 if (!defined('ABSPATH'))
     exit;
 
@@ -7,6 +9,8 @@ $today_date = gmdate('Y-m-d');
 include_once __DIR__ . '/hcpt__query-data.php';
 
 var_dump($hcpt__holiday_info);
+
+
 
 // Calculate days since the past holiday if it exists
 if ($hcpt__holiday_info['recent_past_holiday']) {
@@ -73,16 +77,12 @@ if ($hcpt__holiday_info['recent_upcoming_holiday']) {
                         <?php echo esc_html(gmdate('j F Y')); ?>
                     </p>
                 <?php endif; ?>
-                <!-- Display the featured image -->
-                <?php
-                if (!empty($hcpt__holiday_info['today_holiday']['image'])):
-                    $image_id = (int) $hcpt__holiday_info['today_holiday']['image'];
-                    $image_html = wp_get_attachment_image($image_id, 'medium', false, array(
-                        'class' => 'hcpt__holiday-image',
-                        'alt' => esc_attr($hcpt__holiday_info['today_holiday']['title']),
-                    ));
-                    echo $image_html; // Use echo instead of esc_html for HTML content
-                endif; ?>
+
+                <!-- Display the featured image using URL only for today's holiday -->
+                <?php if (!empty($hcpt__holiday_info['today_holiday']['image'])): ?>
+                    <img src="<?php echo esc_url($hcpt__holiday_info['today_holiday']['image']); ?>" class="hcpt__holiday-image"
+                        alt="<?php echo esc_attr($hcpt__holiday_info['today_holiday']['title']); ?>" />
+                <?php endif; ?>
 
                 <?php if (!empty($hcpt__holiday_info['today_holiday']['description'])): ?>
                     <div class="hcpt__holiday-description">
@@ -103,6 +103,8 @@ if ($hcpt__holiday_info['recent_upcoming_holiday']) {
             <p class="hcpt__current-no-holidays">No holiday today.</p>
         <?php endif; ?>
     </div>
+
+
 
     <!-- Upcoming Holiday Section -->
     <div class="hcpt__holiday-section hcpt__upcoming-holidays">

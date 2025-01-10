@@ -1,4 +1,8 @@
 <?php
+
+
+namespace HCPT;
+
 class HCPT__Holiday_Cal_Deactivator
 {
     public static function deactivate()
