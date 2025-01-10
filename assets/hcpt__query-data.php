@@ -86,4 +86,3 @@ function hcpt__get_holiday_info()
 $hcpt__holiday_info = hcpt__get_holiday_info();
 
 // Output the results
-?>

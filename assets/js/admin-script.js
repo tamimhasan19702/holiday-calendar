@@ -19,3 +19,15 @@ function hcpt__removeDateField(button) {
   const field = button.parentElement;
   field.parentElement.removeChild(field);
 }
+
+function hcpt__copyToClipboard(text) {
+  var tempInput = document.createElement("input");
+  tempInput.style.position = "absolute";
+  tempInput.style.left = "-9999px";
+  tempInput.value = text;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempInput);
+  alert("Shortcode copied to clipboard");
+}
