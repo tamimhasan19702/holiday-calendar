@@ -8,7 +8,6 @@ if (!defined('ABSPATH'))
 $today_date = gmdate('Y-m-d');
 include_once __DIR__ . '/hcpt__query-data.php';
 
-var_dump($hcpt__holiday_info);
 
 
 

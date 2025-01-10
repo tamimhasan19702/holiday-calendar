@@ -95,7 +95,7 @@ class HCPT__Holiday_Cal_Main
 
         <?php
         // End output buffering and output the content
-        echo ob_get_clean();
+        echo wp_kses_post(ob_get_clean());
     }
 
     // Save the holiday data.
@@ -177,7 +177,7 @@ class HCPT__Holiday_Cal_Main
 
             <?php
             // End output buffering and output the content
-            echo ob_get_clean();
+            echo esc_html(ob_get_clean());
         }
     }
 
