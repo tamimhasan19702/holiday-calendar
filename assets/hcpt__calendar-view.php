@@ -20,11 +20,10 @@ if ($hcpt__holiday_info['recent_upcoming_holiday']) {
 }
 
 ?>
-
 <div class="holiday-viewer">
     <!-- Past Holiday Section -->
     <div class="holiday-section past-holiday">
-        <h3 class="holiday-heading"><?php _e('Past Holiday', 'holiday-calendar'); ?></h3>
+        <h3 class="holiday-heading">Past Holiday</h3>
         <?php if ($hcpt__holiday_info['recent_past_holiday']): ?>
             <div class="holiday-card">
                 <h4 class="holiday-title"><?php echo esc_html($hcpt__holiday_info['recent_past_holiday']['title']); ?></h4>
@@ -33,7 +32,7 @@ if ($hcpt__holiday_info['recent_upcoming_holiday']) {
                 </p>
                 <div class="days days-since">
                     <span class="highlight"><?php echo esc_html($hcpt__days_since); ?></span>
-                    <span class="highlight-text"><?php _e('Days since', 'holiday-calendar'); ?></span>
+                    <span class="highlight-text">Days since</span>
                 </div>
                 <a href="<?php echo esc_url($hcpt__holiday_info['recent_past_holiday']['page_link']); ?>"
                     class="holiday-button <?php echo esc_attr($hcpt__holiday_info['recent_past_holiday']['button_class']); ?>">
@@ -41,13 +40,13 @@ if ($hcpt__holiday_info['recent_upcoming_holiday']) {
                 </a>
             </div>
         <?php else: ?>
-            <p class="no-holidays"><?php _e('No past holidays found.', 'holiday-calendar'); ?></p>
+            <p class="no-holidays">No past holidays found.</p>
         <?php endif; ?>
     </div>
 
     <!-- Today's Holiday Section -->
     <div class="holiday-section today-holiday">
-        <h3 class="holiday-heading"><?php _e('Today\'s Holiday', 'holiday-calendar'); ?></h3>
+        <h3 class="holiday-heading">Today's Holiday</h3>
         <?php if ($hcpt__holiday_info['today_holiday']): ?>
             <div class="holiday-card">
                 <h4 class="holiday-title"><?php echo esc_html($hcpt__holiday_info['today_holiday']['title']); ?></h4>
@@ -65,9 +64,6 @@ if ($hcpt__holiday_info['recent_upcoming_holiday']) {
                 endif;
                 ?>
 
-
-
-
                 <div class="holiday-description">
                     <?php echo wp_kses_post($hcpt__holiday_info['today_holiday']['description']); ?>
                 </div>
@@ -78,13 +74,13 @@ if ($hcpt__holiday_info['recent_upcoming_holiday']) {
             </div>
         <?php else: ?>
             <p class="current-date"><?php echo esc_html(gmdate('j F Y')); ?></p>
-            <p class="current-no-holidays"><?php _e('No holiday today.', 'holiday-calendar'); ?></p>
+            <p class="current-no-holidays">No holiday today.</p>
         <?php endif; ?>
     </div>
 
     <!-- Upcoming Holiday Section -->
     <div class="holiday-section upcoming-holidays">
-        <h3 class="holiday-heading"><?php _e('Upcoming Holiday', 'holiday-calendar'); ?></h3>
+        <h3 class="holiday-heading">Upcoming Holiday</h3>
         <?php if ($hcpt__holiday_info['recent_upcoming_holiday']): ?>
             <div class="holiday-card">
                 <h4 class="holiday-title"><?php echo esc_html($hcpt__holiday_info['recent_upcoming_holiday']['title']); ?>
@@ -95,13 +91,13 @@ if ($hcpt__holiday_info['recent_upcoming_holiday']) {
                     if (isset($hcpt__holiday_info['recent_upcoming_holiday']['date'])) {
                         echo esc_html(gmdate('j F Y', strtotime($hcpt__holiday_info['recent_upcoming_holiday']['date'])));
                     } else {
-                        echo esc_html(__('Date not available', 'holiday-calendar'));
+                        echo __('Date not available', 'holiday-calendar');
                     }
                     ?>
                 </p>
                 <div class="days days-left">
                     <span class="highlight"><?php echo esc_html($hcpt__days_left); ?></span>
-                    <span class="highlight-text"><?php _e('Days left', 'holiday-calendar'); ?></span>
+                    <span class="highlight-text">Days left</span>
                 </div>
                 <a href="<?php echo esc_url($hcpt__holiday_info['recent_upcoming_holiday']['page_link']); ?>"
                     class="holiday-button <?php echo esc_attr($hcpt__holiday_info['recent_upcoming_holiday']['button_class']); ?>">
@@ -109,7 +105,7 @@ if ($hcpt__holiday_info['recent_upcoming_holiday']) {
                 </a>
             </div>
         <?php else: ?>
-            <p class="no-holidays"><?php _e('No upcoming holidays found.', 'holiday-calendar'); ?></p>
+            <p class="no-holidays">No upcoming holidays found.</p>
         <?php endif; ?>
     </div>
 

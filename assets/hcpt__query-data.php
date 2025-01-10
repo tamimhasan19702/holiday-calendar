@@ -38,7 +38,7 @@ function hcpt__get_holiday_info()
                 'page_link' => isset($hcpt__meta_values['_holiday_page_link'][0]) ? $hcpt__meta_values['_holiday_page_link'][0] : '',
                 'button_text' => isset($hcpt__meta_values['_holiday_button_text'][0]) ? $hcpt__meta_values['_holiday_button_text'][0] : __(
                     'View More',
-                    'holiday-calender'
+                    'holiday-calendar'
                 ),
                 'button_class' => isset($hcpt__meta_values['_holiday_custom_class'][0]) ? $hcpt__meta_values['_holiday_custom_class'][0] : '',
                 'image' => get_the_post_thumbnail_url(get_the_ID(), 'medium'), // Get the thumbnail URL

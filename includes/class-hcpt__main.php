@@ -123,7 +123,7 @@ class HCPT__Main
     {
         $plugin_main_dir = dirname(dirname(__FILE__));
         ob_start();
-        include_once $plugin_main_dir . '/assets/hcpt__calender-view.php'; // Include the calendar view file
+        include_once $plugin_main_dir . '/assets/hcpt__calendar-view.php'; // Include the calendar view file
         return ob_get_clean();
     }
 
