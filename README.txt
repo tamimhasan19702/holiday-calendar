@@ -1,7 +1,6 @@
 === Holiday Calendar ===
 Contributors: tamimh
 Tags: holiday, calendar, wordpress-plugin
-Requires at least: 6.0
 Tested up to: 6.7
 Stable tag: 1.0.3
 License: GPLv2 or later

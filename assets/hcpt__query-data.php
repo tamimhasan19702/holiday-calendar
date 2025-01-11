@@ -1,5 +1,6 @@
 <?php
-
+if (!defined('ABSPATH'))
+    exit;
 
 function hcpt__get_holiday_info()
 {
