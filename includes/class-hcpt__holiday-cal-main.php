@@ -50,52 +50,52 @@ class HCPT__Holiday_Cal_Main
         // Start output buffering
         ob_start();
         ?>
-        <div id="hcpt__holiday_dates_container">
-            <?php foreach ($holiday_dates as $index => $date): ?>
-                <div class="hcpt__date-field">
-                    <label for="hcpt__holiday_date_<?php echo esc_attr($index); ?>">Holiday Date:</label>
-                    <input type="date" id="hcpt__holiday_date_<?php echo esc_attr($index); ?>" name="hcpt__holiday_dates[]"
-                        value="<?php echo esc_attr($date); ?>" />
-                    <button type="button" class="hcpt__button hcpt__remove" style="margin-left: 10px;"
-                        onclick="hcpt__removeDateField(this)">Remove</button>
-                </div>
-            <?php endforeach; ?>
-        </div>
+<div id="hcpt__holiday_dates_container">
+    <?php foreach ($holiday_dates as $index => $date): ?>
+    <div class="hcpt__date-field">
+        <label for="hcpt__holiday_date_<?php echo esc_attr($index); ?>">Holiday Date:</label>
+        <input type="date" id="hcpt__holiday_date_<?php echo esc_attr($index); ?>" name="hcpt__holiday_dates[]"
+            value="<?php echo esc_attr($date); ?>" />
+        <button type="button" class="hcpt__button hcpt__remove" style="margin-left: 10px;"
+            onclick="hcpt__removeDateField(this)">Remove</button>
+    </div>
+    <?php endforeach; ?>
+</div>
 
-        <div class="hcpt__date-field" style="display: flex; align-items: center; margin-bottom: 20px;">
-            <button type="button" class="hcpt__button" id="hcpt__add_date_button" onclick="hcpt__addDateField()">Add New
-                Date</button>
-        </div>
+<div class="hcpt__date-field" style="display: flex; align-items: center; margin-bottom: 20px;">
+    <button type="button" class="hcpt__button" id="hcpt__add_date_button" onclick="hcpt__addDateField()">Add New
+        Date</button>
+</div>
 
 
 
-        <?php
+<?php
         // Page Link
         $page_link = get_post_meta($post->ID, 'hcpt__holiday_page_link', true);
         ?>
-        <label for="hcpt__holiday_page_link">Button Link:</label>
-        <input type="url" id="hcpt__holiday_page_link" name="hcpt__holiday_page_link"
-            value="<?php echo esc_attr($page_link); ?>" />
+<label for="hcpt__holiday_page_link">Button Link:</label>
+<input type="url" id="hcpt__holiday_page_link" name="hcpt__holiday_page_link"
+    value="<?php echo esc_attr($page_link); ?>" />
 
-        <?php
+<?php
         // Button Text
         $button_text = get_post_meta($post->ID, 'hcpt__holiday_button_text', true);
         ?>
-        <label for="hcpt__holiday_button_text">Button Text:</label>
-        <input type="text" id="hcpt__holiday_button_text" name="hcpt__holiday_button_text"
-            value="<?php echo esc_attr($button_text); ?>" />
+<label for="hcpt__holiday_button_text">Button Text:</label>
+<input type="text" id="hcpt__holiday_button_text" name="hcpt__holiday_button_text"
+    value="<?php echo esc_attr($button_text); ?>" />
 
-        <?php
+<?php
         // Custom Class
         $custom_class = get_post_meta($post->ID, 'hcpt__holiday_custom_class', true);
         ?>
-        <label for="hcpt__holiday_custom_class">Custom Button Class:</label>
-        <input type="text" id="hcpt__holiday_custom_class" name="hcpt__holiday_custom_class"
-            value="<?php echo esc_attr($custom_class); ?>" />
+<label for="hcpt__holiday_custom_class">Custom Button Class:</label>
+<input type="text" id="hcpt__holiday_custom_class" name="hcpt__holiday_custom_class"
+    value="<?php echo esc_attr($custom_class); ?>" />
 
-        <?php
+<?php
         // End output buffering and output the content
-        echo wp_kses_post(ob_get_clean());
+        echo ob_get_clean();
     }
 
     // Save the holiday data.
@@ -168,15 +168,15 @@ class HCPT__Holiday_Cal_Main
             ob_start();
             ?>
 
-            <div class="notice notice-info is-dismissible" style="margin: 20px 0;">
-                <p><strong>Use the following shortcode to view the holiday calendar:</strong>
-                    <code><?php echo esc_html($shortcode); ?></code>
-                </p>
-                <p><button class="hcpt__button hcpt__holiday-shortcode-button" data-nonce="<?php echo esc_attr($nonce); ?>"
-                        onclick="hcpt__copyToClipboard('<?php echo esc_js($shortcode); ?>')">Copy Shortcode</button></p>
-            </div>
+<div class="notice notice-info is-dismissible" style="margin: 20px 0;">
+    <p><strong>Use the following shortcode to view the holiday calendar:</strong>
+        <code><?php echo esc_html($shortcode); ?></code>
+    </p>
+    <p><button class="hcpt__button hcpt__holiday-shortcode-button" data-nonce="<?php echo esc_attr($nonce); ?>"
+            onclick="hcpt__copyToClipboard('<?php echo esc_js($shortcode); ?>')">Copy Shortcode</button></p>
+</div>
 
-            <?php
+<?php
             // End output buffering and output the content
             add_action('admin_notices', function () {
                 echo ob_get_clean();
